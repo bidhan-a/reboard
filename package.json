@@ -1,0 +1,20 @@
+{
+  "name": "reboard",
+  "version": "1.0.0",
+  "description": "React",
+  "main": "index.js",
+  "author": "Bidhan A",
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server --progress"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^5.8.*",
+    "babel-loader": "^5.3.*",
+    "webpack": "^1.12.*",
+    "webpack-dev-server": "^1.10.*"
+  },
+  "dependencies": {
+    "react": "^0.13.*"
+  }
+}

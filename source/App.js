@@ -15,7 +15,7 @@ let cardsList = [
   {
       id: 2,
       title: "Write some code",
-      description: "Code along with the samples in the book",
+      description: "Code along with the samples in the book. The repository can be found at [github](https://github.com/bidhan-a/reboard).",
       status: "todo",
       tasks: [
         {

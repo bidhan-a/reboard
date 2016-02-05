@@ -1,5 +1,6 @@
 import React from 'react';
-import KanbanBoard from './KanbanBoard';
+// import KanbanBoard from './KanbanBoard';
+import KanbanBoardContainer from './KanbanBoardContainer';
 
 // Each card in the cardList represent one card in UI.
 // It can either be in To Do, In Progress, or Done board
@@ -40,4 +41,5 @@ let cardsList = [
   ];
 
 // Pass the cardsList to KanbanBoard component.
-React.render(<KanbanBoard cards={cardsList} />, document.getElementById('root'));
+// React.render(<KanbanBoard cards={cardsList} />, document.getElementById('root'));
+React.render(<KanbanBoardContainer />, document.getElementById('root'));

@@ -7,7 +7,7 @@ import KanbanBoard from './KanbanBoard';
 let cardsList = [
   {
       id: 1,
-      title: "Read the Book",
+      title: "Read a Book",
       description: "I should read the whole book",
       color: "#BD8D31",
       status: "in-progress",
@@ -16,7 +16,7 @@ let cardsList = [
   {
       id: 2,
       title: "Write some code",
-      description: "Code along with the samples in the book. The repository can be found at [github](https://github.com/bidhan-a/reboard).",
+      description: "The repo for this project can be found at [github](https://github.com/bidhan-a/reboard).",
       color: "#3A7E28",
       status: "todo",
       tasks: [

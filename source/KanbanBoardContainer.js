@@ -55,7 +55,7 @@ class KanbanBoardContainer extends Component {
     // Call the API to add the task on the server
     fetch(`${API_URL}/cards/${cardId}/tasks`, {
       method: 'post',
-      headers: 'API_HEADERS',
+      headers: API_HEADERS,
       body: JSON.stringify(newTask)
     })
       .then((response) => {

@@ -7,6 +7,7 @@ class List extends Component {
       return (
         <Card key={card.id}
               taskCallbacks={this.props.taskCallbacks}
+              cardCallbacks={this.props.cardCallbacks}
               id={card.id}
               title={card.title}
               description={card.description}
@@ -25,9 +26,11 @@ class List extends Component {
 };
 
 List.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   cards: PropTypes.arrayOf(PropTypes.object),
-  taskCallbacks: PropTypes.object
+  taskCallbacks: PropTypes.object,
+  cardCallbacks: PropTypes.object
 };
 
 export default List;

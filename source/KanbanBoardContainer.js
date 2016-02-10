@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import update from 'react-addons-update';
 import KanbanBoard from './KanbanBoard';
+import {throttle} from './utils';
 // Polyfills
 import 'babel-polyfill';
 import 'whatwg-fetch';
@@ -17,6 +18,10 @@ class KanbanBoardContainer extends Component {
     this.state = {
       cards: [],
     };
+    // Only call updateCardStatus when arguments change
+    this.updateCardStatus = throttle(this.updateCardStatus.bind(this));
+    // Call updateCardPosition at max every 500ms (or when arguments change)
+    this.updateCardPosition = throttle(this.updateCardPosition.bind(this), 500);
   }
 
   componentDidMount() {
@@ -218,8 +223,8 @@ class KanbanBoardContainer extends Component {
                      add: this.addTask.bind(this)
                    }}
                    cardCallbacks={{
-                     updateStatus: this.updateCardStatus.bind(this),
-                     updatePosition: this.updateCardPosition.bind(this)
+                     updateStatus: this.updateCardStatus,
+                     updatePosition: this.updateCardPosition
                    }} />
     );
   }

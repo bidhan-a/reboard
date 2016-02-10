@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import List from './List';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 // Only pass the cards that have a particular status to the particular lists.
 
@@ -36,4 +38,4 @@ KanbanBoard.propTypes = {
   cardCallbacks: PropTypes.object
 };
 
-export default KanbanBoard;
+export default DragDropContext(HTML5Backend)(KanbanBoard);

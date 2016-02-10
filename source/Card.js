@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import marked from 'marked';
 import CheckList from './CheckList';
+import {DragSource} from 'react-dnd';
+import constants from './constants';
 
 // Custom PropType
 let titlePropType = (props, propName, componentName) => {
@@ -13,6 +15,20 @@ let titlePropType = (props, propName, componentName) => {
       );
     }
   }
+}
+
+const cardDragSpec = {
+  beginDrag(props) {
+    return {
+      id: props.id
+    };
+  }
+}
+
+let collectDrag = (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource()
+  };
 }
 
 class Card extends Component {
@@ -28,6 +44,7 @@ class Card extends Component {
   }
 
   render() {
+      const {connectDragSource} = this.props;
       let cardDetails;
 
       if(this.state.showDetails) {
@@ -52,7 +69,7 @@ class Card extends Component {
         backgroundColor: this.props.color
       }
 
-      return (
+      return connectDragSource(
         <div className="card">
           <div style={sideColor} />
           <div className={
@@ -76,7 +93,9 @@ Card.propTypes = {
   description: PropTypes.string,
   color: PropTypes.string,
   tasks: PropTypes.arrayOf(PropTypes.object),
-  taskCallbacks: PropTypes.object
-}
+  taskCallbacks: PropTypes.object,
+  cardCallbacks: PropTypes.object,
+  connectDragSource: PropTypes.func.isRequired
+};
 
-export default Card;
+export default DragSource(constants.CARD, cardDragSpec, collectDrag)(Card);

@@ -332,19 +332,36 @@ class KanbanBoardContainer extends Component {
   }
 
   render() {
-    return (
-      <KanbanBoard cards={this.state.cards}
-                   taskCallbacks={{
-                     toggle: this.toggleTask.bind(this),
-                     delete: this.deleteTask.bind(this),
-                     add: this.addTask.bind(this)
-                   }}
-                   cardCallbacks={{
-                     updateStatus: this.updateCardStatus,
-                     updatePosition: this.updateCardPosition,
-                     persistCardDrag: this.persistCardDrag.bind(this)
-                   }} />
-    );
+    let kanbanBoard = this.props.children && React.cloneElement(this.props.children, {
+      cards: this.state.cards,
+      taskCallbacks: {
+        toggle: this.toggleTask.bind(this),
+        delete: this.deleteTask.bind(this),
+        add: this.addTask.bind(this)
+      },
+      cardCallbacks: {
+        addCard: this.addCard.bind(this),
+        updateCard: this.updateCard.bind(this),
+        updateStatus: this.updateCardStatus.bind(this),
+        updatePosition: throttle(this.updateCardPosition.bind(this), 500),
+        persistMove: this.persistCardDrag.bind(this)
+      }
+    });
+
+    return kanbanBoard;
+    // return (
+    //   <KanbanBoard cards={this.state.cards}
+    //                taskCallbacks={{
+    //                  toggle: this.toggleTask.bind(this),
+    //                  delete: this.deleteTask.bind(this),
+    //                  add: this.addTask.bind(this)
+    //                }}
+    //                cardCallbacks={{
+    //                  updateStatus: this.updateCardStatus,
+    //                  updatePosition: this.updateCardPosition,
+    //                  persistCardDrag: this.persistCardDrag.bind(this)
+    //                }} />
+    // );
   }
 }
 

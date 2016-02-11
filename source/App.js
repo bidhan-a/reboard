@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Route} from 'react-router';
+import {Router, Route, browserHistory} from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import KanbanBoardContainer from './KanbanBoardContainer';
 import KanbanBoard from './KanbanBoard';
@@ -49,9 +49,9 @@ let cardsList = [
 // React.render(<KanbanBoard cards={cardsList} />, document.getElementById('root'));
 // render(<KanbanBoardContainer />, document.getElementById('root'));
 render((
-  <Router history={createBrowserHistory()}>
+  <Router history={browserHistory}>
     <Route component={KanbanBoardContainer}>
-      <Route path="/" component="KanbanBoard">
+      <Route path="/" component={KanbanBoard}>
         <Route path="new" component={NewCard} />
         <Route path="edit/:card_id" component={EditCard} />
       </Route>
